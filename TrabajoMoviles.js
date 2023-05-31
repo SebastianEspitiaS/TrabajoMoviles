@@ -55,3 +55,25 @@ function ladosTriangulo(lados) {
         return "Es un triángulo isósceles";
     }
 }
+
+function numeroAmigos(n1, n2) {
+    let sumas = [0, 0];
+
+    for (let i = 1; i < n1; i++) {
+        if (n1 % i === 0) {
+            sumas[0] += i;
+        }
+    }
+
+    for (let o = 1; o < n2; o++) {
+        if (n2 % o === 0) {
+            sumas[1] += o;
+        }
+    }
+
+    if (sumas[0] === n2 && sumas[1] === n1) {
+        return "Son numeros amigos";
+    } else {
+        return "No son numeros amigos";
+    }
+}
