@@ -95,3 +95,27 @@ function calcularCompra(valor, cantidad) {
     }
     return [valorSinIvaDes, iva, descuento, total]
 }
+
+function calcularNotas(notas) {
+    let notasPonderadas = [];
+    let suma = 0;
+
+    if (notas[3] === 5) {
+        for (let i = 0; i < 3; i++) {
+            if (notas[i] + 1 <= 5) {
+                notas[i] += 1;
+            } else if (notas[i] > 4 && notas[i] < 5) {
+                notas[i] = 5.0;
+            }
+        }
+    }
+
+    for (let i = 1; i <= 4; i++) {
+        notasPonderadas.push(notas[i - 1] * (i * 0.10));
+    }
+
+    for (let i = 0; i < 4; i++) {
+        suma += notasPonderadas[i];
+    }
+    return suma
+}
