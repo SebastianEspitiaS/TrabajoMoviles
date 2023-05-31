@@ -77,3 +77,21 @@ function numeroAmigos(n1, n2) {
         return "No son numeros amigos";
     }
 }
+
+function calcularCompra(valor, cantidad) {
+    let total = valor * cantidad;
+    let iva = 0;
+    let descuento = 0;
+    const valorSinIvaDes = cantidad * valor;
+
+    if (total > 500000) {
+    if (total > 1000000) {
+        descuento = total * 0.10;
+        total -= descuento;
+    }
+    } else {
+        iva = valorSinIvaDes * 0.19;
+        total += iva;
+    }
+    return [valorSinIvaDes, iva, descuento, total]
+}
