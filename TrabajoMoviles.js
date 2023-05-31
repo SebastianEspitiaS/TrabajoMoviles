@@ -45,3 +45,13 @@ function areaCircunferencia(radio){
     let area = pi * radio ** 2;
     return area
 }
+
+function ladosTriangulo(lados) {
+    if (lados[0] !== lados[1] && lados[0] !== lados[2] && lados[1] !== lados[2]) {
+        return "Es un triángulo escaleno";
+    } else if (lados[0] === lados[1] && lados[0] === lados[2] && lados[1] === lados[2]) {
+        return "Es un triángulo equilátero";
+    } else {
+        return "Es un triángulo isósceles";
+    }
+}
