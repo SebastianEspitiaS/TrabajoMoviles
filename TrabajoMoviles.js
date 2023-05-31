@@ -1,6 +1,4 @@
 function ordenarNumeros(listaOriginal, cantidad) {
-
-    const prompt = require('prompt-sync')();
     let listaOrganizadaMenm = [];
     let listaOrganizadaMaym = [];
     let listaIndice = [];
@@ -40,4 +38,10 @@ function ordenarNumeros(listaOriginal, cantidad) {
         listaOrganizadaMaym.push(listaOrganizadaMenm[p]);
     }
     return [listaOriginal, listaOrganizadaMenm, listaOrganizadaMaym];
+}
+
+function areaCircunferencia(radio){
+    const pi = 3.14159265;
+    let area = pi * radio ** 2;
+    return area
 }
