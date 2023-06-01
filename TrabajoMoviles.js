@@ -37,13 +37,13 @@ function ordenarNumeros(listaOriginal, cantidad) {
     for (let p = cantidad-1; p >= 0; p--) {
         listaOrganizadaMaym.push(listaOrganizadaMenm[p]);
     }
-    return [listaOriginal, listaOrganizadaMenm, listaOrganizadaMaym];
+    return [listaOrganizadaMenm, listaOrganizadaMaym];
 }
 
 function areaCircunferencia(radio){
     const pi = 3.14159265;
     let area = pi * radio ** 2;
-    return area
+    return area;
 }
 
 function ladosTriangulo(lados) {
@@ -93,7 +93,7 @@ function calcularCompra(valor, cantidad) {
         iva = valorSinIvaDes * 0.19;
         total += iva;
     }
-    return [valorSinIvaDes, iva, descuento, total]
+    return [valorSinIvaDes, iva, descuento, total];
 }
 
 function calcularNotas(notas) {
@@ -117,5 +117,114 @@ function calcularNotas(notas) {
     for (let i = 0; i < 4; i++) {
         suma += notasPonderadas[i];
     }
-    return suma
+    return suma;
+}
+
+function menu() {
+    contadorM = [0, 0, 0, 0, 0, 0];
+    let op;
+    do{
+        console.log("\nmenu opciones:");
+        console.log(
+        "1. Organizar lista de numeros\n"+
+        "2. Calcular area de una circunferencia\n"+
+        "3. Tipo de triangulo\n"+
+        "4. Numeros amigos\n"+
+        "5. Calcular Compra\n"+
+        "6. Calcular nota\n"+
+        "0. Salir\n"
+    );
+        op = prompt("Digite una opcion: ");
+        switch (op) {
+            case "1":
+                contadorM[0]++;
+                let listaOriginal = [];
+                let cantidad = parseInt(prompt("¿Cuántos números quieres organizar? "));
+                for (let p = 0; p < cantidad; p++) {
+                    listaOriginal.push(parseFloat(prompt("Digite un número: ")));
+                }
+                let listas = ordenarNumeros(listaOriginal, cantidad);
+                console.log(`\nLista original: ${listaOriginal}`);
+                console.log(`Lista organizada de menor a mayor: ${listas[0]}`);
+                console.log(`Lista organizada de mayor a menor: ${listas[1]}`);
+                break;
+
+            case "2":
+                contadorM[1]++;
+                let radio = parseFloat(prompt("Ingrese el radio de la circunferencia: "));
+                area = areaCircunferencia(radio);
+                console.log(`El area de la circunferencia con radio ${radio} es: ${area}`);
+                break;
+
+            case "3":
+                contadorM[2]++;
+                let lados = [];
+                console.log("Ingrese los 3 lados del triángulo.\n");
+
+                for (let i = 1; i <= 3; i++) {
+                    let lado = parseFloat(prompt(`Ingrese el lado ${i} del triángulo:`));
+                    lados.push(lado);
+                }
+                tipoTriangulo = ladosTriangulo(lados);
+                console.log(tipoTriangulo);
+                break;
+
+            case "4":
+                contadorM[3]++;
+                const n1 = parseInt(prompt("Ingrese un numero: "));
+                const n2 = parseInt(prompt("Ingrese otro numero: "));
+                numeroA = numeroAmigos(n1, n2);
+                console.log(numeroA);
+                break;
+
+            case "5":
+                contadorM[4]++;
+                let valor = parseInt(prompt("Ingresa el valor del producto: "));
+                let cantidadP = parseInt(prompt("Ingresa la cantidad del producto: "));
+                resultado = calcularCompra(valor, cantidadP);
+                console.log(`Valor sin iva y descuento: ${resultad[0]}`);
+                console.log(`IVA: ${resultado[1]}`);
+                console.log(`Descuento: ${resultado[2]}`);
+                console.log(`Valor con iva y descuento: ${resultado[3]}`);
+                break;
+
+            case "6":
+                contadorM[5]++;
+                let notas = [];
+                let nota = 0;
+                for (let i = 0; i < 4; i++){
+                    do {
+                        nota = parseFloat(prompt(`Ingrese la nota ${i + 1}: `));
+                        if (nota < 0 || nota > 5) {
+                            console.log("La nota mínima es 0 y la nota máxima es 5...\n");
+                        }
+                        } while (nota < 0 || nota > 5);
+                        notas.push(nota);
+                    }
+                sumaN = calcularNotas(notas);
+                console.log(`\nLa nota del estudiante es: ${sumaN}`);
+                if (sumaN > 3.5) {
+                    console.log("El estudiante aprobó la materia");
+                } else {
+                    console.log("El estudiante reprobó la materia");
+                }
+                break;
+
+            case "0":
+                console.log("Finalizo el programa...\n")
+                break;
+
+            default:
+                console.log("Escriba una opcion correcta...");
+                break;
+        }
+    }while(op != "0");
+    return contadorM;
+}
+
+const prompt = require('prompt-sync')();
+repeticionesMenu = menu();
+
+for(let i = 0; i < 6; i++){
+    console.log(`La opcion ${i+1} se repitio ${repeticionesMenu[i]}`)
 }
