@@ -222,7 +222,6 @@ function menu() {
     return contadorM;
 }
 
-const prompt = require('prompt-sync')();
 repeticionesMenu = menu();
 
 for(let i = 0; i < 6; i++){
