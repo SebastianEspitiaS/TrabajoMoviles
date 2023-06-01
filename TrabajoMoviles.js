@@ -124,17 +124,16 @@ function menu() {
     contadorM = [0, 0, 0, 0, 0, 0];
     let op;
     do{
-        console.log("\nmenu opciones:");
-        console.log(
-        "1. Organizar lista de numeros\n"+
-        "2. Calcular area de una circunferencia\n"+
-        "3. Tipo de triangulo\n"+
-        "4. Numeros amigos\n"+
-        "5. Calcular Compra\n"+
-        "6. Calcular nota\n"+
-        "0. Salir\n"
-    );
-        op = prompt("Digite una opcion: ");
+        op = prompt(
+            "Opcion Menu:\n"+
+            "1. Organizar lista de numeros\n"+
+            "2. Calcular area de una circunferencia\n"+
+            "3. Tipo de triangulo\n"+
+            "4. Numeros amigos\n"+
+            "5. Calcular Compra\n"+
+            "6. Calcular nota\n"+
+            "0. Salir\n"+
+            "Digite una opcion: ");
         switch (op) {
             case "1":
                 contadorM[0]++;
@@ -182,7 +181,7 @@ function menu() {
                 let valor = parseInt(prompt("Ingresa el valor del producto: "));
                 let cantidadP = parseInt(prompt("Ingresa la cantidad del producto: "));
                 resultado = calcularCompra(valor, cantidadP);
-                console.log(`Valor sin iva y descuento: ${resultad[0]}`);
+                console.log(`Valor sin iva y descuento: ${resultado[0]}`);
                 console.log(`IVA: ${resultado[1]}`);
                 console.log(`Descuento: ${resultado[2]}`);
                 console.log(`Valor con iva y descuento: ${resultado[3]}`);
