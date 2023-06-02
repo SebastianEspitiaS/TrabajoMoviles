@@ -2,14 +2,11 @@ function ordenarNumeros(listaOriginal, cantidad) {
     let listaOrganizadaMenm = [];
     let listaOrganizadaMaym = [];
     let listaIndice = [];
-
     for (let x = 0; x < cantidad; x++) {
         let y = x;
-
         for (let o = 0; o < cantidad; o++) {
             let oNrepite = true;
             let yNrepite = true;
-
             if (x > 0) {
                 for (let z = 0; z < x; z++) {
                     if (listaIndice[z] === o) {
@@ -19,7 +16,6 @@ function ordenarNumeros(listaOriginal, cantidad) {
                     }
                 }
             }
-
             if (!yNrepite && oNrepite) {
                 y = o;
             }
@@ -29,11 +25,9 @@ function ordenarNumeros(listaOriginal, cantidad) {
                 }
             }
         }
-
         listaIndice.push(y);
         listaOrganizadaMenm.push(listaOriginal[y]);
     }
-
     for (let p = cantidad-1; p >= 0; p--) {
         listaOrganizadaMaym.push(listaOrganizadaMenm[p]);
     }
@@ -58,19 +52,16 @@ function ladosTriangulo(lados) {
 
 function numeroAmigos(n1, n2) {
     let sumas = [0, 0];
-
     for (let i = 1; i < n1; i++) {
         if (n1 % i === 0) {
             sumas[0] += i;
         }
     }
-
     for (let o = 1; o < n2; o++) {
         if (n2 % o === 0) {
             sumas[1] += o;
         }
     }
-
     if (sumas[0] === n2 && sumas[1] === n1) {
         return "Son numeros amigos";
     } else {
@@ -83,7 +74,6 @@ function calcularCompra(valor, cantidad) {
     let iva = 0;
     let descuento = 0;
     const valorSinIvaDes = cantidad * valor;
-
     if (total > 500000) {
     if (total > 1000000) {
         descuento = total * 0.10;
@@ -99,7 +89,6 @@ function calcularCompra(valor, cantidad) {
 function calcularNotas(notas) {
     let notasPonderadas = [];
     let suma = 0;
-
     if (notas[3] === 5) {
         for (let i = 0; i < 3; i++) {
             if (notas[i] + 1 <= 5) {
@@ -109,11 +98,9 @@ function calcularNotas(notas) {
             }
         }
     }
-
     for (let i = 1; i <= 4; i++) {
         notasPonderadas.push(notas[i - 1] * (i * 0.10));
     }
-
     for (let i = 0; i < 4; i++) {
         suma += notasPonderadas[i];
     }
@@ -124,6 +111,16 @@ function menu() {
     contadorM = [0, 0, 0, 0, 0, 0];
     let op;
     do{
+        // console.log(
+        //     "Opcion Menu:\n"+
+        //     "1. Organizar lista de numeros\n"+
+        //     "2. Calcular area de una circunferencia\n"+
+        //     "3. Tipo de triangulo\n"+
+        //     "4. Numeros amigos\n"+
+        //     "5. Calcular Compra\n"+
+        //     "6. Calcular nota\n"+
+        //     "0. Salir\n"
+        // )
         op = prompt(
             "Opcion Menu:\n"+
             "1. Organizar lista de numeros\n"+
@@ -135,13 +132,36 @@ function menu() {
             "0. Salir\n"+
             "Digite una opcion: ");
         switch (op) {
+
             case "1":
                 contadorM[0]++;
                 let listaOriginal = [];
-                let cantidad = parseInt(prompt("¿Cuántos números quieres organizar? "));
-                for (let p = 0; p < cantidad; p++) {
-                    listaOriginal.push(parseFloat(prompt("Digite un número: ")));
-                }
+                let cantidad = 0;
+                let numero;
+                // for (let p = 0; p < 3; p++) {
+                //     listaOriginal.push(parseFloat(prompt("Digite un número: ")));
+                // }
+                // cantidad = 3;
+                do {
+                    numero = prompt("Digite un número o (N para salir): ");
+
+                    if (
+                        (numero >= 'a' && numero <= 'z') && (numero != "n") || (numero >= 'A' && numero <= 'Z') && (numero != "N")||
+                        numero === '°' || numero === '¬' || numero === '!' || numero === '"' || numero === '#' || numero === '$' ||
+                        numero === '/' || numero === '(' || numero === ')' || numero === '=' || numero === '?' || numero === '¡' ||
+                        numero === '*' || numero === '+' || numero === '-' || numero === ',' || numero === ';' || numero === ':' ||
+                        numero === '.' || numero === '_' || numero === 'ñ' || numero === 'Ñ' || numero === '[' || numero === ']' ||
+                        numero === '{' || numero === '}' || numero === '|' || numero === '<' || numero === '>' || numero === '\\' ||
+                        numero === '@' || numero === '\'' || numero === '^' || numero === '`' || numero === '´' || numero === '%' ||
+                        numero === '&') {
+                        console.log('Ingrese solo numeros...\n');
+
+                    } else if (numero != "n" && numero != "N") {
+                        listaOriginal.push(parseFloat(numero));
+                        cantidad++;
+                    }
+                } while (numero != 'n' && numero != 'N');
+
                 let listas = ordenarNumeros(listaOriginal, cantidad);
                 console.log(`\nLista original: ${listaOriginal}`);
                 console.log(`Lista organizada de menor a mayor: ${listas[0]}`);
@@ -159,7 +179,6 @@ function menu() {
                 contadorM[2]++;
                 let lados = [];
                 console.log("Ingrese los 3 lados del triángulo.\n");
-
                 for (let i = 1; i <= 3; i++) {
                     let lado = parseFloat(prompt(`Ingrese el lado ${i} del triángulo:`));
                     lados.push(lado);
@@ -210,7 +229,7 @@ function menu() {
                 break;
 
             case "0":
-                console.log("Finalizo el programa...\n")
+                console.log("\nFinalizo el programa...")
                 break;
 
             default:
@@ -220,7 +239,7 @@ function menu() {
     }while(op != "0");
     return contadorM;
 }
-
+//const prompt = require('prompt-sync')();
 repeticionesMenu = menu();
 
 for(let i = 0; i < 6; i++){
