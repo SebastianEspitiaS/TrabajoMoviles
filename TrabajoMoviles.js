@@ -111,16 +111,6 @@ function menu() {
     contadorM = [0, 0, 0, 0, 0, 0];
     let op;
     do{
-        // console.log(
-        //     "Opcion Menu:\n"+
-        //     "1. Organizar lista de numeros\n"+
-        //     "2. Calcular area de una circunferencia\n"+
-        //     "3. Tipo de triangulo\n"+
-        //     "4. Numeros amigos\n"+
-        //     "5. Calcular Compra\n"+
-        //     "6. Calcular nota\n"+
-        //     "0. Salir\n"
-        // )
         op = prompt(
             "Opcion Menu:\n"+
             "1. Organizar lista de numeros\n"+
@@ -153,7 +143,7 @@ function menu() {
                         numero === '.' || numero === '_' || numero === 'ñ' || numero === 'Ñ' || numero === '[' || numero === ']' ||
                         numero === '{' || numero === '}' || numero === '|' || numero === '<' || numero === '>' || numero === '\\' ||
                         numero === '@' || numero === '\'' || numero === '^' || numero === '`' || numero === '´' || numero === '%' ||
-                        numero === '&') {
+                        numero === '&' || numero === ' ' || numero === '') {
                         console.log('Ingrese solo numeros...\n');
 
                     } else if (numero != "n" && numero != "N") {
@@ -239,7 +229,6 @@ function menu() {
     }while(op != "0");
     return contadorM;
 }
-//const prompt = require('prompt-sync')();
 repeticionesMenu = menu();
 
 for(let i = 0; i < 6; i++){
